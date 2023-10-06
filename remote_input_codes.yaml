@@ -1,0 +1,74 @@
+# Emulated Projector and HDMI Switcher Codes
+
+# Input from Chromecast Remote (Panasonic TV Codes)
+# Power
+- platform: remote_receiver
+  name: projector_emulated_chromecast_power
+  panasonic:
+    address: 0x4004
+    command: 0x0100BCBD
+
+# Input
+- platform: remote_receiver
+  name: projector_emulated_chromecast_input
+  panasonic:
+    address: 0x4004
+    command: 0x0100A0A1
+
+# Input from Fire Stick Remote (Samsung TV Codes)
+# Power
+- platform: remote_receiver
+  name: projector_emulated_firestick_power
+  samsung:
+    data: 0xE0E040BF
+    nbits: 32
+
+# Input Cycle (probably not used)
+- platform: remote_receiver
+  name: projector_emulated_firestick_input_cycle
+  samsung:
+    data: 0xE0E09768
+    nbits: 32
+
+# Input 1 (Google Chrome)
+- platform: remote_receiver
+  name: projector_emulated_firestick_input_1
+  samsung:
+    data: 0xE0E09768
+    nbits: 32
+
+# Input 2 (Fire Stick)
+- platform: remote_receiver
+  name: projector_emulated_firestick_input_2
+  samsung:
+    data: 0xE0E07D82
+    nbits: 32
+
+# Input 3 (Blu-Ray)
+- platform: remote_receiver
+  name: projector_emulated_firestick_input_3
+  samsung:
+    data: 0xE0E043BC
+    nbits: 32
+
+# Input 4 (PC)
+- platform: remote_receiver
+  name: projector_emulated_firestick_input_4
+  samsung:
+    data: 0xE0E0A35C
+    nbits: 32
+
+# Input from Sony Blu-Ray Player Remote (Vizio TV Codes, so it can also control soundbar volume and mute)
+# Power
+- platform: remote_receiver
+  name: projector_emulated_sonybd_power
+  nec:
+    address: 0xFB04
+    command: 0xF708
+
+# Input
+- platform: remote_receiver
+  name: projector_emulated_sonybd_input
+  nec:
+    address: 0xFB04
+    command: 0xD02F
