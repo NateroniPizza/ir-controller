@@ -1,5 +1,10 @@
+substitutions:
+  name: "testname"
+  friendly_name: "testfriendlyname"
+
 esphome:
-  name: ir-controller
+  name: ${name}
+  friendly_name: ${friendly_name}
 
 esp8266:
   board: d1_mini
@@ -7,22 +12,29 @@ esp8266:
 # Enable logging
 logger:
 
+api:
+
+ota:
+
+wifi:
+captive_portal:
+
+improv_serial:
+
 dashboard_import:
   package_import_url: github://nateronipizza/ir-controller/test.yaml@main
   import_full_config: false
 
-captive_portal:
+light:
+  - platform: binary
+    output: "id_buzzer"
+    name: "Buzzer"
 
 output:
 # Pin D3 / 0. For buzzer.
   - platform: gpio
     id: "id_buzzer"
     pin: 0
-
-light:
-  - platform: binary
-    output: "id_buzzer"
-    name: "Buzzer"
 
 # Pin D1 / 5. For IR receiver.
 remote_receiver:
