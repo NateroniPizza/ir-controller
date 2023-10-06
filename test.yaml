@@ -1,0 +1,57 @@
+esphome:
+  name: ir-controller
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+
+dashboard_import:
+  package_import_url: github://nateronipizza/ir-controller/test.yaml@main
+  import_full_config: false
+
+captive_portal:
+
+output:
+# Pin D3 / 0. For buzzer.
+  - platform: gpio
+    id: "id_buzzer"
+    pin: 0
+
+light:
+  - platform: binary
+    output: "id_buzzer"
+    name: "Buzzer"
+
+# Pin D1 / 5. For IR receiver.
+remote_receiver:
+  pin:
+    number: 5
+    inverted: true
+  dump: all
+  id: "id_ir_receiver"
+
+# Pin D2 / 4. For transmitter IR LED.
+remote_transmitter:
+  pin: 4
+  carrier_duty_percent: 50%
+  id: "id_ir_transmitter_led"
+
+
+# Current Sensor
+#sensor:
+#  - platform: ct_clamp
+#    sensor: adc_sensor
+#    name: "Measured Current"
+#    update_interval: 5s
+#    sample_duration: 200ms
+#    filters:
+#      - calibrate_linear:
+#        - 0.000 -> 0.0
+#        - 0.00227 -> 0.95
+
+  # Example source sensor
+  #- platform: adc
+  #  pin: A0
+  #  id: adc_sensor
